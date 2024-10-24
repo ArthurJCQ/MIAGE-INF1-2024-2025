@@ -30,6 +30,12 @@ third();
 fourth();
 
 // Call stack : first => second (-> Callback in Macro Task Queue) => third (-> Callback in Micro Task Queue) => fourth => Micro Task Queue => Macro Task Queue
+// Web APIs : Some of them are async to take advantage of event loop offloading.
+
+// Callback based or Promised base API.
+
+// MacroTask queue = API's CALLBACKS
+// MicroTask queue = Promise's CALLBACKS
 
 // API calls can be synchronous like with console API: console.log('hey') -> immediately processed in call stack.
 // If there is a callback, it is sent in event loop
