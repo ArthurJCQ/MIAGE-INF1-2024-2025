@@ -1,3 +1,43 @@
+function randomColor() {
+    return Math.floor(Math.random() * 16777215).toString(16);
+}
+
+let selectedSquare = null;
+
+function selectSquare(square) {
+    if (selectedSquare) {
+        selectedSquare.classList.remove('selected');
+    }
+    selectedSquare = square;
+    selectedSquare.classList.add('selected');
+}
+
+document.getElementById("btn").onclick = function() {
+    if (selectedSquare) {
+        selectedSquare.style.backgroundColor = `#${randomColor()}`;
+    }
+};
+
+document.getElementById("btn2").onclick = function() {
+    document.getElementById("btn").disabled = !document.getElementById("btn").disabled;
+};
+
+document.getElementById("btn3").onclick = function() {
+    document.querySelectorAll('.square').forEach(square => {
+        square.style.backgroundColor = 'bisque';
+    });
+};
+
+document.querySelectorAll('.square').forEach(square => {
+    square.onclick = function() {
+        selectSquare(square);
+    };
+});
+
+
+
+//Exerice//
+
 // const obj = {
 //     a: 1
 // };
@@ -60,16 +100,3 @@
 // const John = new Person('John', 'Doe');
 // console.log(John);
 
-
-function randomColor() {
-    return Math.floor(Math.random() * 16777215).toString(16);
-}
-document.getElementById("btn").addEventListener('click', () => {
-    const square = document.getElementById('square');
-    square.style.backgroundColor = `#${randomColor()}`;
-})
-
-document.getElementById("btn2").addEventListener('click', () => {
-    //désactiver le premier bouton si on appuie une premiere fois et l'activer si on appuie une deuxieme fois
-    document.getElementById("btn").disabled = !document.getElementById("btn").disabled;
-})
