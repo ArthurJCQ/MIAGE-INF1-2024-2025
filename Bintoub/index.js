@@ -84,6 +84,6 @@ document.getElementById("btn3").addEventListener("click", () => {
     });
     selectedSquare = null;  
 });
-
+//
 
 //
