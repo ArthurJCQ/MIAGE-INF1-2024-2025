@@ -1,45 +1,35 @@
-const obj= {
-    a : "t",
-    b : 5
-};
-console.log(obj);
-obj["clem"] = obj["a"];
-console.log(obj)
-obj["a"] = "changé"
-console.log(obj)
-console.log(obj.hasOwnProperty(("clem")));
-console.log(Object.getPrototypeOf(obj));
-console.log(Object.getPrototypeOf(obj["a"]));
+var square = document.getElementById("square");
 
-
-class Person{
-
-    age = 20;
-
-    constructor (prenom, nom){
-        this.prenom = prenom;
-        this.nom = nom;
-    }
-
-    bonjour(){
-        console.log("Bonjour " + this.prenom + " " + this.nom + " ,vous avez " + this.age  + " ans !");
-    }
+function randomColor() {
+    return Math.floor(Math.random() * 16777215).toString(16);
 }
 
-
-clement = new Person("Clément", "Sauvonnet");
-clement.bonjour();
-console.log(clement);
-
-
-document.getElementById("btn").addEventListener("click",changeColor);
-
-function changeColor(){
-    const square = document.getElementById("square");
-    if (square.style.backgroundColor === "red"){
-        square.style.backgroundColor = "blue";
+document.getElementById("disable").addEventListener("click", () =>{
+    if(document.getElementById("btn").disabled === true){
+        document.getElementById("btn").disabled = false;
     }
     else{
-        square.style.backgroundColor = "red"
+        document.getElementById("btn").disabled = true;
     }
-}
+});
+
+document.getElementById("reset").addEventListener("click", () =>{
+    document.getElementById("square").style.backgroundColor = "bisque";
+    document.getElementById("squareBis").style.backgroundColor = "bisque";
+});
+
+document.getElementById("squareBis").addEventListener("click", () => {
+    document.getElementById("square").className = "square";
+    document.getElementById("squareBis").className = "square selected";
+    square = document.getElementById("squareBis");
+
+});
+document.getElementById("square").addEventListener("click", () => {
+    document.getElementById("square").className = "square selected";
+    document.getElementById("squareBis").className = "square";
+    square = document.getElementById("square");
+});
+
+document.getElementById("btn").addEventListener("click", () => {
+    square.style.backgroundColor = "#" + randomColor();
+});
