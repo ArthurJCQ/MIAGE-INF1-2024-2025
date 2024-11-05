@@ -2,12 +2,12 @@ const square = document.getElementById('square');
 const switchColorButton = document.getElementById('btn');
 const resetColorButton = document.getElementById('reset');
 
-// fonction génératrice de couleur en mode random
+// fonction génératrice de couleurs en mode random
 function randomColor() {
     return Math.floor(Math.random() * 16777215).toString(16);
 }
 
-// changer le background du carré sélectionné
+// fonction pour changer le background du carré sélectionné
 function changeColor() {
     const selectedSquare = document.querySelector('.selected');
     if (selectedSquare) {
@@ -15,14 +15,14 @@ function changeColor() {
     }
 }
 
-// tout reset à l'original
+// tout reset à l'état original : enlever les couleurs
 function resetColors() {
     document.querySelectorAll('.square').forEach(square => {
         square.style.backgroundColor = '';
     });
 }
 
-// select le carré qui est cliqué
+// sélectionner le carré qui est cliqué
 function selectSquare(event) {
     document.querySelectorAll('.square').forEach(square => {
         square.classList.remove('selected');
@@ -37,7 +37,7 @@ document.querySelectorAll('.square').forEach(square => {
     square.addEventListener('click', selectSquare);
 });
 
-// Toggle the disabled state of switchColorButton when clicking the disable button : fonction déjà fournie
+// Toggle l'état disabled du switchColorButton quand on clique le bouton switch on/off : fonction déjà fournie
 document.getElementById("disable").addEventListener('click', () => {
     switchColorButton.disabled = !switchColorButton.disabled;
 });
