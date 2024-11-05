@@ -29,3 +29,15 @@ squarebis.addEventListener("click", () => {
   square.className = "square";
   squarebis.className = "square selected";
 });
+
+/*
+//En version optimisée
+const squares = [square, squarebis];
+
+squares.forEach((sq) => {
+  sq.addEventListener("click", () => {
+    squares.forEach((el) => (el.className = "square"));
+    sq.className = "square selected";
+  });
+});
+*/
