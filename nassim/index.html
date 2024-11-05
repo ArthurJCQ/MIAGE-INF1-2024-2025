@@ -1,12 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<script>
-</script>
-<body>
-</body>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tutoriel</title>
+    <style>
+      .selected {
+        border: 3px black dotted;
+      }
+      .square {
+        width: 200px;
+        height: 200px;
+        background-color: bisque;
+      }
+    </style>
+  </head>
+  <body>
+    <section style="width: 200px; margin: 0 auto">
+      <h1>Tuto</h1>
+      <button id="btn" style="margin-bottom: 20px" onclick="handleButton()">
+        Click me !
+      </button>
+      <div id="square" class="square"></div>
+    </section>
+  </body>
+  <script src="index.js"></script>
+  <script>
+    function handleButton() {
+      const square = document.querySelector(".square");
+      square.classList.toggle("selected");
+    }
+  </script>
 </html>
