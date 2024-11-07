@@ -36,7 +36,7 @@ document.querySelectorAll('.square').forEach(square => {
 
 
 
-//Exerice//
+//** Exerice fait en cours **//
 
 // const obj = {
 //     a: 1
