@@ -1,42 +1,37 @@
-// Récupération des éléments HTML
-const squares = document.querySelectorAll(".square"); // Sélectionne tous les éléments avec la classe "square"
-const switchColorButton = document.getElementById("btn"); // Bouton pour changer la couleur
-let selectedSquare = document.querySelector(".selected"); // Initialiser le carré sélectionné par défaut
+const square = document.querySelectorAll(".square");
+const switchColorButton = document.getElementById("btn");
+let selected_square = document.querySelector(".selected");
 
-// Fonction pour générer une couleur aléatoire
 function randomColor() {
   return Math.floor(Math.random() * 16777215).toString(16);
 }
 
-// Fonction pour changer la couleur du carré sélectionné
-switchColorButton.addEventListener("click", () => {
-  if (selectedSquare) {
-    selectedSquare.style.backgroundColor = `#${randomColor()}`;
+document.getElementById("btn").addEventListener("click", () => {
+  if (selected_square) {
+    selected_square.style.backgroundColor = `#${randomColor()}`;
   }
 });
 
-// Permet de désactiver ou réactiver le bouton de changement de couleur
 document.getElementById("disable").addEventListener("click", () => {
   switchColorButton.disabled = !switchColorButton.disabled;
 });
 
-// Fonction pour réinitialiser les couleurs des deux carrés
 document.getElementById("reset").addEventListener("click", () => {
-  squares.forEach((square) => {
-    square.style.backgroundColor = "bisque";
+  square.forEach((s) => {
+    s.style.backgroundColor = "bisque";
   });
 });
 
-// Gestion de la sélection d'un carré
-squares.forEach((square) => {
-  square.addEventListener("click", () => {
-    // Enlève la classe 'selected' de tous les carrés
-    squares.forEach((sq) => sq.classList.remove("selected"));
+function selectSquare(square1, square2) {
+  document.getElementById(square2).classList.remove("selected");
+  document.getElementById(square1).classList.add("selected");
+  selected_square = document.getElementById(square1);
+}
 
-    // Ajoute la classe 'selected' au carré cliqué
-    square.classList.add("selected");
+document.getElementById("square").addEventListener("click", () => {
+  selectSquare("square", "squareBis");
+});
 
-    // Mettre à jour le carré sélectionné
-    selectedSquare = square;
-  });
+document.getElementById("squareBis").addEventListener("click", () => {
+  selectSquare("squareBis", "square");
 });
