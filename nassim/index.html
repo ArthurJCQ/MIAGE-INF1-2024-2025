@@ -1,33 +1,40 @@
 <!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <title>Tutoriel</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changer Couleur Bouton</title>
     <style>
-      .selected {
-        border: 3px black dotted;
-      }
-      .square {
-        width: 200px;
-        height: 200px;
-        background-color: bisque;
-      }
+        .selected {
+            border: 3px black dotted;
+        }
+        .square {
+            width: 200px;
+            height: 200px;
+        }
+        /* Couleurs initiales des carrés */
+        #square1 {
+            background-color: red;
+        }
+
+        #square2 {
+            background-color: blue;
+        }
     </style>
-  </head>
-  <body>
-    <section style="width: 200px; margin: 0 auto">
-      <h1>Tuto</h1>
-      <button id="btn" style="margin-bottom: 20px" onclick="handleButton()">
-        Click me !
-      </button>
-      <div id="square" class="square"></div>
+</head>
+<body>
+    <section style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+        <h1>TP JavaScript</h1>
+        <div>
+            <button id="changeColorButton" style="margin-bottom:20px;">Changer couleur</button>
+            <button id="disableButton">Désactiver</button>
+            <button id="resetButton">Réinitialiser</button>
+        </div>
+        <div style="width: 500px; display: flex; justify-content: space-between;">
+            <div class="square selected" id="square1"></div>
+            <div class="square" id="square2"></div>
+        </div>
     </section>
-  </body>
-  <script src="index.js"></script>
-  <script>
-    function handleButton() {
-      const square = document.querySelector(".square");
-      square.classList.toggle("selected");
-    }
-  </script>
+    <script src="index.js"></script>
+</body>
 </html>
