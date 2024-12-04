@@ -14,4 +14,3 @@ async function fetchCatFact() {
   }
 }
 fetchCatFact().then();
-
