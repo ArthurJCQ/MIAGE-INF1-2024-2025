@@ -1,35 +1,50 @@
 var square = document.getElementById("square");
+const defaultNumber = 10;
+const apilink = 'https://catfact.ninja/fact';
+const getCatFact = async () => {
+    const response = await fetch(apilink);
+    return response.json();
+};
 
-function randomColor() {
-    return Math.floor(Math.random() * 16777215).toString(16);
+async function sample() {
+    const { fact } = await getCatFact();
+    return fact;
 }
 
-document.getElementById("disable").addEventListener("click", () =>{
-    if(document.getElementById("btn").disabled === true){
-        document.getElementById("btn").disabled = false;
+const getCatFactList = async (nombreFact) => {
+    const listeFaits = [];
+    for (let i = 0; i < nombreFact; i++) {
+        const fact = await sample();
+        listeFaits.push(fact);
     }
-    else{
-        document.getElementById("btn").disabled = true;
+    return listeFaits;
+};
+
+function showCatList(factList) {
+    const divCatList = document.getElementById('catList');
+    const ul = document.createElement('ul');
+
+    factList.forEach(fact => {
+        const li = document.createElement('li');
+        li.textContent = fact;
+        ul.appendChild(li);
+    });
+    divCatList.innerHTML = '';
+    divCatList.appendChild(ul);
+}
+
+document.getElementById("reset").addEventListener("click", async () => {
+    let number = parseInt(document.getElementById("nbFaits").value); // Récupérer la valeur de l'input
+
+    if (number === 0 || isNaN(number)) {
+        number = defaultNumber;
     }
+
+    const liste = await getCatFactList(number);
+    showCatList(liste);
 });
 
-document.getElementById("reset").addEventListener("click", () =>{
-    document.getElementById("square").style.backgroundColor = "bisque";
-    document.getElementById("squareBis").style.backgroundColor = "bisque";
-});
-
-document.getElementById("squareBis").addEventListener("click", () => {
-    document.getElementById("square").className = "square";
-    document.getElementById("squareBis").className = "square selected";
-    square = document.getElementById("squareBis");
-
-});
-document.getElementById("square").addEventListener("click", () => {
-    document.getElementById("square").className = "square selected";
-    document.getElementById("squareBis").className = "square";
-    square = document.getElementById("square");
-});
-
-document.getElementById("btn").addEventListener("click", () => {
-    square.style.backgroundColor = "#" + randomColor();
+document.addEventListener("DOMContentLoaded", async () => {
+    const liste = await getCatFactList(defaultNumber);
+    showCatList(liste);
 });

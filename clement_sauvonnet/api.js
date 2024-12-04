@@ -1,4 +1,4 @@
-async function fetchCatFact() {
+async function getCatFact() {
     try {
         const response = await fetch('https://catfact.ninja/fact');
 
@@ -13,4 +13,15 @@ async function fetchCatFact() {
         console.error('Il y a eu un problème avec l\'opération fetch :', error);
     }
 }
-fetchCatFact().then();
+getCatFact().then();
+const getCatFact2 = async () =>{
+    const response = await fetch('https://catfact.ninja/fact');
+    return response.json();
+}
+
+async function sample(){
+    const { fact } = await getCatFact2();
+    console.log(fact)
+}
+sample().then();
+

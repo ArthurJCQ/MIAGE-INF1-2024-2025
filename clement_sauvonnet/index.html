@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <title>TP API JS</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f3f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            width: 80%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #d64d4d;
+            margin-bottom: 20px;
+        }
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1rem;
+            width: 100px;
+            margin: 0 10px;
+            border: 1px solid #e4a9a9;
+            border-radius: 4px;
+            text-align: center;
+            background-color: #fbe6e6;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #d64d4d;/
+        }
+
+        button {
+            background-color: #f4b6b6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f07171;
+        }
+
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #catList ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #catList li {
+            background-color: #fbe6e6;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .selected {
+            border: 3px black dotted;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <h1>TP1 API JavaScript</h1>
+    <div class="input-container">
+        <label for="nbFaits">Nombre d'information souhaité (10 par défaut ou si 0)  :</label>
+        <input type="number" id="nbFaits" value="0" min="1">
+        <button id="reset">Reset</button>
+    </div>
+
+    <div id="catList"></div>
+</section>
+
+<script src="index.js"></script>
+</body>
+</html>
