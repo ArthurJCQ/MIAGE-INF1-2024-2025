@@ -4,3 +4,12 @@ const getCatFacts = async () => {
 };
 
 getCatFacts().then((fact) => console.log(fact));
+
+// CORRECTION
+async function sample() {
+  const data = await getCatFacts();
+  console.log(data);
+  console.log(data.fact);
+}
+
+sample();
