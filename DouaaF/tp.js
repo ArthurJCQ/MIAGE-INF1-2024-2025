@@ -8,5 +8,3 @@ const notesAvecCoefficient = notesInf1.map(note => {
 });
 
 console.log(notesAvecCoefficient);
-
-
