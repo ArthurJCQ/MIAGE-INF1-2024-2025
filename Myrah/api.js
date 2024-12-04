@@ -1,0 +1,1 @@
+fetch('https://catfact.ninja/fact')
