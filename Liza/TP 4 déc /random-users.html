@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des Utilisateurs Aléatoires</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    li {
+      background: #fff;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    li img {
+      border-radius: 50%;
+      margin: 10px 0;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Utilisateurs Aléatoires</h1>
+  <ul id="user-list"></ul>
+  <button id="refresh">Afficher 5 utilisateurs aléatoires</button>
+
+  <script src="random-users.js"></script>
+</body>
+</html>
