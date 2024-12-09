@@ -1,10 +1,14 @@
 // Sélection des éléments du DOM
 const postList = document.getElementById("post-list");
 const refreshButton = document.getElementById("refresh-btn");
+const loadingMessage = document.getElementById("loading-message");
 
 // Fonction pour récupérer et afficher les données
 async function fetchPosts() {
     try {
+        // Afficher le message de chargement
+        loadingMessage.style.display = "block";
+
         // Vidage de la liste
         postList.innerHTML = "";
 
@@ -21,8 +25,12 @@ async function fetchPosts() {
             listItem.textContent = `${post.title}`;
             postList.appendChild(listItem);
         });
+
     } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
+    } finally {
+        // Cacher le message de chargement
+        loadingMessage.style.display = "none";
     }
 }
 
