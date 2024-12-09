@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>TP - API</title>
+    <style>
+        .selected {
+            border: 3px black dotted;
+        }
+
+        .square {
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <section style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+        <h1>Quelle est l'origine de ton nom de famille ?</h1>
+        <div>
+            <form onsubmit="getOrigin(event)">
+                Saisis ton nom de famille : <input id="inputName" type="text" name="name" required>
+                <input type="submit" value="Chercher">
+            </form>
+        </div>
+        <div style="width: 500px; display: flex; justify-content: space-between;">
+            <ul id="results">
+            </ul>
+        </div>
+    </section>
+</body>
+<script src="index.js"></script>
+
+</html>
