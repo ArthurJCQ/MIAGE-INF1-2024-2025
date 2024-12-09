@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random User Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    #post-list {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    #post-list li {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px auto;
+      max-width: 400px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+    #post-list img {
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 15px;
+    }
+    #post-list p {
+      margin: 5px 0;
+      color: #555;
+    }
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<h1>Random User Generator</h1>
+<ul id="post-list">
+  <!-- Les informations des utilisateurs s'afficheront ici -->
+</ul>
+<button id="refresh-btn">Refresh</button>
+
+<script src="index.js" defer></script>
+</body>
+</html>
