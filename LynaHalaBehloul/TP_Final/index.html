@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Posts</title>
+    <title>Films Studio Ghibli</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
             margin: 0;
             padding: 20px;
             display: flex;
@@ -18,6 +18,9 @@
         h1 {
             color: #333;
             margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         ul {
@@ -25,54 +28,74 @@
             padding: 0;
             margin: 0;
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
         }
 
         li {
             background: #fff;
             margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         li:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .movie-title {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .movie-info {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5;
         }
 
         button {
-            background-color: #007BFF;
+            background-color: #ff6f61;
             color: #fff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             margin-top: 20px;
         }
 
         button:hover {
-            background-color: #0056b3;
-        }
-
-        button:active {
-            background-color: #003f7f;
+            background-color: #e65c54;
+            transform: scale(1.05);
         }
 
         .loading {
-            font-size: 18px;
-            color: #555;
-            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 20px;
+            animation: fadeIn 1s infinite;
+        }
+
+        @keyframes fadeIn {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-<h1>Liste des Posts</h1>
-<div class="loading" id="loading-message" style="display: none;">Chargement...</div>
-<ul id="post-list"></ul>
+<h1>Films Studio Ghibli</h1>
+<div class="loading" id="loading-message" style="display: none;">Chargement des films...</div>
+<ul id="movie-list"></ul>
 <button id="refresh-btn">Refresh</button>
 
 <script src="index.js"></script>
