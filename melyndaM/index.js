@@ -1,49 +1,67 @@
-//On sélectionne l'élément HTML avec l'ID square (le premier carré) et on le stocke dans la variable square.
-const square = document.getElementById('square');
-//On sélectionne l'élément HTML avec l'ID squareBis (le deuxième carré) et on le stocke dans la variable squareBis.
-const squareBis = document.getElementById('squareBis');
-//On sélectionne le bouton avec l'ID btn, qui servira à changer la couleur du carré sélectionné, et on le stocke dans switchColorButton.
-const switchColorButton = document.getElementById('btn');
-// On sélectionne le bouton de réinitialisation (reset) pour l’utiliser plus tard, et on le stocke dans resetButton.
-const resetButton = document.getElementById('reset');
+// Fonction pour récupérer un fait de chat depuis l'API
+async function fetchCatFact() {
+    const statusMessage = document.getElementById('status-message') || document.createElement('p');
+    statusMessage.id = 'status-message';
 
-// Fonction pour générer une couleur aléatoire
-function randomColor() {
-    return Math.floor(Math.random() * 16777215).toString(16);
-}
+    try {
+        statusMessage.textContent = 'Chargement...';
+        statusMessage.className = 'loading';
+        document.querySelector('.container').appendChild(statusMessage);
 
-// Fonction pour sélectionner un carré
-function selectSquare(selectedSquare) {
-    // Sélectionne tous les éléments ayant la classe square (donc les deux carrés).Retirer la classe 'selected' de tous les carrés
-    document.querySelectorAll('.square').forEach(square => {
-        square.classList.remove('selected');
-    });
-    // Ajouter la classe 'selected' au carré cliqué,Cela ajoute une bordure en pointillé, comme défini dans le CSS.
-    selectedSquare.classList.add('selected');
-}
-
-// Ajouter un événement de clic pour chaque carré
-square.addEventListener('click', () => selectSquare(square));
-squareBis.addEventListener('click', () => selectSquare(squareBis));
-
-// Changer la couleur du carré sélectionné lors du clic sur le bouton
-document.getElementById("btn").addEventListener('click', () => {
-    //Sélectionne le carré actuellement marqué comme sélectionné (ayant la classe selected).
-    const selectedSquare = document.querySelector('.square.selected');
-    //Vérifie que selectedSquare existe (qu'un carré est bien sélectionné).
-    if (selectedSquare) {
-        // Change la couleur de fond du carré sélectionné en une couleur aléatoire, générée par la fonction randomColor().
-        selectedSquare.style.backgroundColor = `#${randomColor()}`;
+        const response = await fetch('https://catfact.ninja/fact');
+        if (!response.ok) {
+            throw new Error(`Erreur réseau : ${response.status}`);
+        }
+        const data = await response.json();
+        return data.fact;
+    } catch (error) {
+        console.error('Erreur lors de la récupération du fait de chat:', error);
+        statusMessage.textContent = 'Impossible de charger un fait. Veuillez réessayer.';
+        statusMessage.className = 'error';
+        return null;
+    } finally {
+        setTimeout(() => statusMessage.remove(), 2000);
     }
-});
+}
 
-// Désactiver ou réactiver le bouton de changement de couleur
-document.getElementById("disable").addEventListener('click', () => {
-    switchColorButton.disabled = !switchColorButton.disabled;
-});
+// Fonction pour afficher un fait de chat dans la liste
+async function displayCatFact() {
+    const fact = await fetchCatFact();
+    if (!fact) return;
 
-// Réinitialiser la couleur des deux carrés au clic sur le bouton de réinitialisation
-resetButton.addEventListener('click', () => {
-    square.style.backgroundColor = 'bisque';
-    squareBis.style.backgroundColor = 'bisque';
-});
+    const factList = document.getElementById('fact-list');
+    const facts = Array.from(factList.children).map(li => li.textContent);
+
+    // Éviter les doublons
+    if (facts.includes(fact)) {
+        console.log('Fait déjà affiché, en récupérant un nouveau...');
+        return displayCatFact();
+    }
+
+    // Crée un nouvel élément de liste
+    const listItem = document.createElement('li');
+    listItem.textContent = fact;
+    listItem.className = 'fact-item';
+
+    // Ajoute l'élément à la liste
+    factList.appendChild(listItem);
+
+    // Limiter le nombre de faits affichés à 5
+    if (factList.children.length > 5) {
+        factList.removeChild(factList.firstChild);
+    }
+}
+
+// Fonction pour rafraîchir la liste des faits
+function refreshFactList() {
+    const factList = document.getElementById('fact-list');
+    factList.innerHTML = ''; // Efface la liste existante
+    displayCatFact(); // Affiche un nouveau fait
+}
+
+// Ajouter un écouteur d'événement au bouton "Rafraîchir"
+const refreshButton = document.getElementById('refresh-btn');
+refreshButton.addEventListener('click', refreshFactList);
+
+// Affiche un fait au démarrage
+displayCatFact();

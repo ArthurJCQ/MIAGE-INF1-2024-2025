@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>API Harry Potter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+
+<body style="padding: 10%;">
+    <H1>Harry Potter API</H1>
+    <h2 style="color: red;" id="error"></h2>
+    <button id="reload-btn">New Character</button>
+    <script src="index.js"></script>
+    <table>
+        <tr>
+            <td>Full Name</td>
+            <td id="fullNameCase"></td>
+        </tr>
+        <tr>
+            <td>Nickname</td>
+            <td id="nicknameCase"></td>
+        </tr>
+        <tr>
+            <td>Hogwarts House</td>
+            <td id="hogwartsHouseCase"></td>
+        </tr>
+        <tr>
+            <td>Interpreted By</td>
+            <td id="interpretedByCase"></td>
+        </tr>
+        <tr>
+            <td>Children</td>
+            <td id="childrenCase"></td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td id="imageCase"></td>
+        </tr>
+        <tr>
+            <td>Birthdate</td>
+            <td id="birthdateCase"></td>
+        </tr>
+    </table>
+</body>
+
+</html>
