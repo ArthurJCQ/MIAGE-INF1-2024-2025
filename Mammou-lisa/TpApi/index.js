@@ -4,7 +4,7 @@ const pokemonList = document.getElementById("pokemon-list");
 const getRandomPokemons = async () => {
     try {
         
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 10; i++) {
             const randomId = Math.floor(Math.random() * 100) + 1; 
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
             const pokemon = await response.json();
