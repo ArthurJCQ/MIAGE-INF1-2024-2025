@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP API JavaScript - Pokémon</title>                                                                     
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #4CAF50;
+        }
+
+        #pokemon-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        #pokemon-list li {
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #pokemon-list li:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        #pokemon-list li img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        #pokemon-list li h3 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        #pokemon-list li p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>TP API JavaScript</h1>
+    <h2>Liste des Pokémon</h2>
+    <ul id="pokemon-list"></ul>
+    <button id="random">Refresh</button>
+    <script src="index.js"></script> 
+</body>
+</html>
