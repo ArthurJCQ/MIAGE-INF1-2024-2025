@@ -1,0 +1,30 @@
+const postList = document.getElementById('post-list');
+const refreshButton = document.getElementById('refresh-btn');
+
+async function fetchRandomUser() {
+    try {
+        const response = await fetch('https://randomuser.me/api/');
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP ! statut : ${response.status}`);
+        }
+        const data = await response.json();
+        postList.innerHTML = '';
+        const user = data.results[0];
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <img src="${user.picture.thumbnail}" alt="Photo de ${user.name.first}" />
+            <p><strong>Nom :</strong> ${user.name.first} ${user.name.last}</p>
+            <p><strong>Email :</strong> ${user.email}</p>
+        `;
+        postList.appendChild(listItem);
+    } catch (error) {
+        postList.innerHTML = `<li style="color: red;">Erreur lors du chargement de l'utilisateur.</li>`;
+    }
+}
+
+function init() {
+    fetchRandomUser();
+    refreshButton.addEventListener('click', fetchRandomUser);
+}
+
+init();
