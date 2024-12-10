@@ -1,11 +1,10 @@
-// URL de l'API REST Countries
 const API_URL = 'https://restcountries.com/v3.1/all';
 
-// Éléments DOM
+
 const fetchButton = document.getElementById('fetch-countries-btn');
 const countryList = document.getElementById('country-list');
 
-// Fonction pour récupérer les données des pays
+
 async function fetchCountries() {
     try {
         const response = await fetch(API_URL);
@@ -16,14 +15,12 @@ async function fetchCountries() {
 
         const countries = await response.json();
 
-        // Vide la liste actuelle
         countryList.innerHTML = '';
 
-        // Ajoute les pays au DOM
         countries.forEach(country => {
             const listItem = document.createElement('li');
 
-            // Création du contenu pour chaque pays
+  
             listItem.innerHTML = `
                 <img src="${country.flags.png}" alt="Drapeau de ${country.name.common}" />
                 <p><strong>${country.name.common}</strong></p>
@@ -39,5 +36,5 @@ async function fetchCountries() {
     }
 }
 
-// Ajoute un gestionnaire d'événement au bouton
+
 fetchButton.addEventListener('click', fetchCountries);
